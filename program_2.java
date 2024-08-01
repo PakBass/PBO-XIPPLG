@@ -11,6 +11,7 @@ public class program_2 {
 
         //proses
        
+        luas = (alas * tinggi)/2;
 
         //output
         System.out.println("Alas segitiga   = "+alas+" cm");

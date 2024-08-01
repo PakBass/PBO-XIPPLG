@@ -30,14 +30,14 @@ class segitiga {
 public class program_2_pbo {
     public static void main(String[] args) {
         //membuat objek segitiga
-        segitiga segitiga = new segitiga(10, 4);
+        segitiga hitung = new segitiga(10, 4);
 
         //menghitung luas segitiga
-        float luas = segitiga.HitungLuas();
+        float luas = hitung.HitungLuas();
 
         //Output
-        System.out.println("Alas segitiga   = "+segitiga.getAlas()+" cm");
-        System.out.println("Tinggi segitiga = "+segitiga.getTinggi()+" cm");
+        System.out.println("Alas segitiga   = "+hitung.getAlas()+" cm");
+        System.out.println("Tinggi segitiga = "+hitung.getTinggi()+" cm");
         System.out.println("Luas Segitiga adalah = " +luas+" cm");
     }
 }
