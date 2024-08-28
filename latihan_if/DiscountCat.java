@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class DiscountCat {
     public static void main(String[] args) {
-        @SuppressWarnings("resource")
         Scanner input = new Scanner(System.in);
 
         System.out.print("Masukkan jumlah cat yang dibeli (liter): ");
@@ -13,15 +12,29 @@ public class DiscountCat {
         char merkCat = input.next().charAt(0);
 
         double hargaPerLiter = 0;
-        if (merkCat == 'A') {
-            hargaPerLiter = 50000;
-        } else if(merkCat == 'B') {
-            hargaPerLiter = 45000;
-        } else if (merkCat == 'C') {
-            hargaPerLiter = 40000;
-        } else {
-            System.out.println("Merk cat tidak ditemukan");
+        switch (merkCat) {
+            case 'A':
+                hargaPerLiter = 50000;
+                break;
+            case 'B':
+                hargaPerLiter = 45000;
+                break;
+            case 'C':
+                hargaPerLiter = 40000;
+                break;
+            default:
+                System.out.println("Tidak ada merk cat yang lain");
+                break;
         }
+        // if (merkCat == 'A') {
+        //     hargaPerLiter = 50000;
+        // } else if(merkCat == 'B') {
+        //     hargaPerLiter = 45000;
+        // } else if (merkCat == 'C') {
+        //     hargaPerLiter = 40000;
+        // } else {
+        //     System.out.println("Merk cat tidak ditemukan");
+        // }
 
         double hargaTotal = jumlahLiter * hargaPerLiter;
         double diskon = 0;
