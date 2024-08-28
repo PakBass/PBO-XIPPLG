@@ -5,7 +5,7 @@ public class lat_1 {
         int a = 100;
         int b = 12;
 
-        if (a > b) {
+        if (a < b) {
             System.out.println("Variabel a lebih besar");
         }
     }
