@@ -57,5 +57,6 @@ public class bioskop {
             lagi = jawab.equalsIgnoreCase("y");
         }
         System.out.println("Terima kasih telah membeli tiket");
+        input.close();
     }
 }
