@@ -42,7 +42,6 @@ public class LombaPhbn {
         listSiswa.add(siswa);
         System.out.println("Data siswa berhasil ditambahkan");
     }
-
     public void tampilkanData(){
         System.out.print("\033[H\033[2J");
         System.out.flush();
@@ -81,6 +80,20 @@ public class LombaPhbn {
             }
         }
     }
+    public void hapusData(String nama){
+        boolean cariData = false;
+        for (Siswa siswa : listSiswa) {
+            if (siswa.getNama().equalsIgnoreCase(nama)) {
+                listSiswa.remove(siswa);
+                System.out.print("Data siswa berhasil dihapus");
+                cariData = true;
+                break;
+            } else  if (!cariData) {
+                System.out.println("Data siswa tidak ada!!");
+            }
+        }
+    }
+
     public static void main(String[] args) {
         LombaPhbn lomba = new LombaPhbn();
         Scanner input = new Scanner(System.in);
@@ -119,6 +132,11 @@ public class LombaPhbn {
                         System.out.print("Masukkan nama siswa yang  ingin di ubah: ");
                         String namaUpdate = input.nextLine();
                         lomba.updateData(namaUpdate);
+                        break;
+                case 4 :
+                        System.out.print("Masukkan nama siswa yang ingin dihapus: ");
+                        String namaHapus = input.nextLine();
+                        lomba.hapusData(namaHapus);
                         break;
             }
         } while (pilih != 5);
