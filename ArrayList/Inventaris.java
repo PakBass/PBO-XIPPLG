@@ -122,63 +122,70 @@ public class Inventaris {
     public static void main(String[] args) {
         Inventaris pendataan = new Inventaris();
         Scanner input = new Scanner(System.in);
-        int pilih;
-        do{
-            System.out.println();
-            System.out.println("-------------------------");
-            System.out.println("Pilihan Menu");
-            System.out.println("-------------------------");
-            System.out.println("1. Tambah data alat");
-            System.out.println("2. Tampilkan semua data inventaris");
-            System.out.println("3. Ubah data alat");
-            System.out.println("4. Hapus data");
-            System.out.println("5. Keluar program");
-            System.out.println("-------------------------");
-            System.out.print("Masukkan pilihan anda: ");
-            pilih = input.nextInt();
-            input.nextLine();
+        int pilih = 0;
+            do{
+                try{
+                    System.out.println();
+                    System.out.println("-------------------------");
+                    System.out.println("Pilihan Menu");
+                    System.out.println("-------------------------");
+                    System.out.println("1. Tambah data alat");
+                    System.out.println("2. Tampilkan semua data inventaris");
+                    System.out.println("3. Ubah data alat");
+                    System.out.println("4. Hapus data");
+                    System.out.println("5. Keluar program");
+                    System.out.println("-------------------------");
+                    System.out.print("Masukkan pilihan anda: ");
+                    pilih = input.nextInt();
+                    input.nextLine();
+        
+                    switch (pilih) {
+                        case 1:
+                                System.out.print("Masukkan kode alat       : ");
+                                String kodeAlat = input.nextLine();
+                                System.out.print("Masukkan nama alat       : ");
+                                String namaAlat = input.nextLine();
+                                System.out.print("Masukkan merk Alat       : ");
+                                String merkAlat = input.nextLine();
+                                System.out.print("Masukkan jumlah unit     : ");
+                                String unitAlat = input.nextLine();
+                                System.out.print("Masukkan kondisi alat    : ");
+                                String kondisiAlat = input.nextLine();
+                                Alat dataBaru = new Alat(kodeAlat, namaAlat, merkAlat, unitAlat, kondisiAlat);
+                                pendataan.tambahDataAlat(dataBaru);
+                            break;
+                        case 2 :
+                                pendataan.tampilkanDataAlat();
+                            break;
+                        case 3 :
+                                boolean cariKode = false;
+                                while (!cariKode) {
+                                    System.out.print("Masukkan kode alat yang  ingin di ubah: ");
+                                    String kodeUpdate = input.nextLine();
+                                    cariKode = pendataan.updateDataAlat(kodeUpdate);
+                                    if (!cariKode) {
+                                        System.out.println("Kode alat tidak ditemukan!");
+                                    }
+                                }
+                                break;
+                        case 4 :
+                                System.out.print("Masukkan kode alat yang  ingin di hapus: ");
+                                String kodeHapus = input.nextLine();
+                                pendataan.hapusDataAlat(kodeHapus);
+                                break;
+                        default:
+                            break;
+                    }
+                }  catch (Exception e) {
+                    System.out.print("\033[H\033[2J");
+                    System.out.flush();
+                    System.out.println("Input tidak valid (harus berupa angka)");
+                    input.nextLine();
+                }
 
-            switch (pilih) {
-                case 1:
-                        System.out.print("Masukkan kode alat       : ");
-                        String kodeAlat = input.nextLine();
-                        System.out.print("Masukkan nama alat       : ");
-                        String namaAlat = input.nextLine();
-                        System.out.print("Masukkan merk Alat       : ");
-                        String merkAlat = input.nextLine();
-                        System.out.print("Masukkan jumlah unit     : ");
-                        String unitAlat = input.nextLine();
-                        System.out.print("Masukkan kondisi alat    : ");
-                        String kondisiAlat = input.nextLine();
-                        Alat dataBaru = new Alat(kodeAlat, namaAlat, merkAlat, unitAlat, kondisiAlat);
-                        pendataan.tambahDataAlat(dataBaru);
-                    break;
-                case 2 :
-                        pendataan.tampilkanDataAlat();
-                    break;
-                case 3 :
-                        boolean cariKode = false;
-                        while (!cariKode) {
-                            System.out.print("Masukkan kode alat yang  ingin di ubah: ");
-                            String kodeUpdate = input.nextLine();
-                            cariKode = pendataan.updateDataAlat(kodeUpdate);
-                            if (!cariKode) {
-                                System.out.println("Kode alat tidak ditemukan!");
-                            }
-                        }
-                        break;
-                case 4 :
-                        System.out.print("Masukkan kode alat yang  ingin di hapus: ");
-                        String kodeHapus = input.nextLine();
-                        pendataan.hapusDataAlat(kodeHapus);
-                        break;
-                default:
-                    break;
-            }
-
-        } while(pilih != 5);
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-        System.out.println("Keluar program");
-    }
+            } while(pilih != 5);
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+            System.out.println("Keluar program");
+        }
 }
